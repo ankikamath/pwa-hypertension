@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bar Chart of Gender vs Probability of Hypertension</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+</head>
+<body>
+<canvas id="myChart" width="400" height="400"></canvas>
+<script>
+var ctx = document.getElementById("myChart").getContext("2d");
+var myChart = new Chart(ctx, {
+type: "bar",
+data: {
+labels: ["Male", "Female"],
+datasets: [{
+data: [0.17, 0.22],
+backgroundColor: ["#00FFFF2", "#00ff00"]
+}]
+},
+options: {
+title: "Gender vs Probability of Hypertension",
+scales: {
+yAxes: [{
+ticks: {
+beginAtZero: true
+}
+}]
+},
+responsive: true,
+maintainAspectRatio: false
+}
+});
+</script>
+</body>
+</html>
