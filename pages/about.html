@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weight vs Hypertension Bar Chart</title>
+  <style>
+    canvas {
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="chartCanvas"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('chartCanvas').getContext('2d');
+
+    // Sample data
+    const data = [
+      { weight: 60, hypertension: true },
+      { weight: 70, hypertension: false },
+      { weight: 80, hypertension: true },
+      { weight: 65, hypertension: false },
+      { weight: 75, hypertension: true }
+    ];
+
+    const weights = data.map(item => item.weight);
+    const hypertension = data.map(item => item.hypertension);
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: weights.map(weight => weight.toString()),
+        datasets: [{
+          label: 'Hypertension',
+          data: hypertension,
+          backgroundColor: ['rgba(54, 162, 235, 0.6)', 'rgba(255, 99, 132, 0.6)'],
+          borderColor: ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
